@@ -1,7 +1,7 @@
 {
-  "name": "superProductivity",
+  "name": "human_productivity",
   "version": "12.0.3",
-  "description": "ToDo list and Time Tracking",
+  "description": "A Realistic ToDo list and Time Tracking",
   "keywords": [
     "ToDo",
     "Task Management",
@@ -9,13 +9,13 @@
     "GitHub",
     "Time Tracking"
   ],
-  "homepage": "https://super-productivity.com",
+  "homepage": "",
   "repository": {
     "type": "git",
-    "url": "git://github.com/johannesjo/super-productivity.git"
+    "url": ""
   },
-  "license": "MIT",
-  "author": "Johannes Millan <contact@super-productivity.com> (http://super-productivity.com)",
+  "license": "MPL",
+  "author": "Manas",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged && npm run lint",
