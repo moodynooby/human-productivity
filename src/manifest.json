@@ -20,7 +20,7 @@
   "dir": "auto",
   "lang": "en-US",
   "name": "human productivity",
-  "short_name": "TASKS",
+  "short_name": "Tasks",
   "description": "A truly human tasks app",
   "start_url": "./index.html",
   "scope": "./"
