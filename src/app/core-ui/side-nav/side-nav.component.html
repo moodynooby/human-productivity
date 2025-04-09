@@ -125,50 +125,6 @@
     </div>
   </section>
 }
-@if (tagList$ | async; as tagList) {
-  <section class="tags">
-    <button
-      #menuEntry
-      #tagExpandBtn
-      (click)="toggleExpandTags()"
-      (keydown)="toggleExpandTagsLeftRight($event)"
-      [class.isExpanded]="isTagsExpanded"
-      class="expand-btn"
-      mat-menu-item
-    >
-      <span class="title">{{ T.MH.TAGS | translate }}</span>
-      <mat-icon>expand_more</mat-icon>
-    </button>
-    <div
-      [@standardList]="tagList?.length"
-      cdkDropList
-      (cdkDropListDropped)="dropOnTagList(tagList, $event)"
-    >
-      @for (tag of tagList; track tag.id) {
-        <side-nav-item
-          #menuEntry
-          cdkDrag
-          [cdkDragData]="tag"
-          [cdkDragStartDelay]="IS_TOUCH_PRIMARY ? DRAG_DELAY_FOR_TOUCH_LONGER : 0"
-          (keydown)="checkFocusTag($event)"
-          [workContext]="tag"
-          [type]="WorkContextType.TAG"
-          [defaultIcon]="'label'"
-          [activeWorkContextId]="activeWorkContextId"
-        ></side-nav-item>
-      }
-    </div>
-    @if (!tagList.length && isTagsExpanded) {
-      <div class="no-tags-info">{{ T.MH.NO_TAG_INFO | translate }}</div>
-    }
-    <!--  <button (click)="addTag()"-->
-    <!--          *ngIf="isTagsExpanded"-->
-    <!--   #menuEntry mat-menu-item>-->
-    <!--    <mat-icon>add</mat-icon>-->
-    <!--    {{T.MH.CREATE_TAG|translate}}-->
-    <!--  </button>-->
-  </section>
-}
 
 <!--<section class="other-task-level-section">-->
 <!--</section>-->
@@ -184,88 +140,6 @@
     <mat-icon svgIcon="repeat"></mat-icon>
     <span class="text">{{ T.MH.REPEAT_SCHEDULED | translate }}</span>
   </button>
-  <button
-    #menuEntry
-    [mat-menu-trigger-for]="helpMenu"
-    class="route-link"
-    mat-menu-item
-  >
-    <mat-icon>help_center</mat-icon>
-    <span class="text">{{ T.MH.HELP | translate }}</span>
-  </button>
-
-  <mat-menu #helpMenu="matMenu">
-    <ng-template matMenuContent>
-      <a
-        mat-menu-item
-        href="https://github.com/johannesjo/super-productivity/blob/master/README.md#question-how-to-use-it"
-        target="_blank"
-      >
-        <mat-icon>help_center</mat-icon>
-        <span class="text">{{ T.MH.HM.GET_HELP_ONLINE | translate }}</span>
-      </a>
-
-      <a
-        class="route-link"
-        mat-menu-item
-        [href]="getGithubErrorUrl()"
-        target="_blank"
-      >
-        <mat-icon>bug_report</mat-icon>
-        <span class="text">{{ T.MH.HM.REPORT_A_PROBLEM | translate }}</span>
-      </a>
-
-      <a
-        mat-menu-item
-        href="https://github.com/johannesjo/super-productivity/blob/master/CONTRIBUTING.md"
-        target="_blank"
-      >
-        <mat-icon>volunteer_activism</mat-icon>
-        <span class="text">{{ T.MH.HM.CONTRIBUTE | translate }}</span>
-      </a>
-
-      <a
-        mat-menu-item
-        href="https://www.reddit.com/r/superProductivity/"
-        target="_blank"
-      >
-        <mat-icon>forum</mat-icon>
-        <span class="text">{{ T.MH.HM.REDDIT_COMMUNITY | translate }}</span>
-      </a>
-
-      <button
-        (click)="startTour(TourId.Welcome)"
-        mat-menu-item
-      >
-        <mat-icon>directions</mat-icon>
-        <span class="text">{{ T.MH.HM.START_WELCOME | translate }}</span>
-      </button>
-      @if (IS_MOUSE_PRIMARY) {
-        <button
-          (click)="startTour(TourId.KeyboardNav)"
-          mat-menu-item
-        >
-          <mat-icon>directions</mat-icon>
-          <span class="text">{{ T.MH.HM.KEYBOARD | translate }}</span>
-        </button>
-      }
-      <button
-        (click)="startTour(TourId.Sync)"
-        mat-menu-item
-      >
-        <mat-icon>directions</mat-icon>
-        <span class="text">{{ T.MH.HM.SYNC | translate }}</span>
-      </button>
-      <button
-        (click)="startTour(TourId.IssueProviders)"
-        mat-menu-item
-      >
-        <mat-icon>directions</mat-icon>
-        <span class="text">{{ T.MH.HM.CALENDARS | translate }}</span>
-      </button>
-    </ng-template>
-  </mat-menu>
-
   <button
     #menuEntry
     class="route-link tour-settingsMenuBtn"
